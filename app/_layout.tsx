@@ -5,6 +5,9 @@
 // import { useEffect } from 'react';
 // import 'react-native-reanimated';
 
+import { recognizePrefixSuffix } from "react-native-reanimated/lib/typescript/reanimated2/animation/util";
+import { ReanimatedFlatList } from "react-native-reanimated/lib/typescript/reanimated2/component/FlatList";
+
 // import { useColorScheme } from '@/hooks/useColorScheme';
 
 // // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -36,23 +39,23 @@
 //   );
 // }
 
-
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
 
-export default function App() {
+const RootLayout = () => {
 	return (
 		<View style={styles.container}>
-			<Text>Open up App.js to start working on your app!</Text>
-			<StatusBar style="auto" />
+			<Text>RootLayout</Text>
 		</View>
-	);
-}
+	)
+} 
+
+export default RootLayout
 
 const styles = StyleSheet.create({
 	container: {
+		display: 'flex',
 		flex: 1,
-		backgroundColor: '#fff',
 		alignItems: 'center',
 		justifyContent: 'center'
 	}
