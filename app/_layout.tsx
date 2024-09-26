@@ -5,8 +5,8 @@
 // import { useEffect } from 'react';
 // import 'react-native-reanimated';
 
-import { recognizePrefixSuffix } from "react-native-reanimated/lib/typescript/reanimated2/animation/util";
-import { ReanimatedFlatList } from "react-native-reanimated/lib/typescript/reanimated2/component/FlatList";
+// import { recognizePrefixSuffix } from "react-native-reanimated/lib/typescript/reanimated2/animation/util";
+// import { ReanimatedFlatList } from "react-native-reanimated/lib/typescript/reanimated2/component/FlatList";
 
 // import { useColorScheme } from '@/hooks/useColorScheme';
 
@@ -41,7 +41,10 @@ import { ReanimatedFlatList } from "react-native-reanimated/lib/typescript/reani
 
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import { Slot, Stack } from 'expo-router';
+import { Slot, Stack, SplashScreen } from 'expo-router';
+import { useFonts } from 'expo-font';
+
+SplashScreen.preventAutoHideAsync();
 
 const RootLayout = () => {
 	// return (
@@ -51,6 +54,27 @@ const RootLayout = () => {
 	// 		<Text>Footer</Text>
 	// 	</>
 	// )
+
+	const [fontsLoaded, error] = useFonts({
+		"Poppins-Black": require("../assets/fonts/Poppins-Black.ttf"),
+		"Poppins-Bold": require("../assets/fonts/Poppins-Bold.ttf"),
+		"Poppins-ExtraBold": require("../assets/fonts/Poppins-ExtraBold.ttf"),
+		"Poppins-ExtraLight": require("../assets/fonts/Poppins-ExtraLight.ttf"),
+		"Poppins-Light": require("../assets/fonts/Poppins-Light.ttf"),
+		"Poppins-Medium": require("../assets/fonts/Poppins-Medium.ttf"),
+		"Poppins-Regular": require("../assets/fonts/Poppins-Regular.ttf"),
+		"Poppins-SemiBold": require("../assets/fonts/Poppins-SemiBold.ttf"),
+		"Poppins-Thin": require("../assets/fonts/Poppins-Thin.ttf"),
+	});
+
+	React.useEffect(() => {
+		if (error) throw error;
+
+		if (fontsLoaded) SplashScreen.hideAsync();
+
+	}, [fontsLoaded, error]);
+
+	if(!fontsLoaded && !error) return null;
 
 	return (
 		<Stack>
