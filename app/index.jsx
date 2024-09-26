@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import {  ScrollView, Text, View, Image } from 'react-native';
-import { Link } from 'expo-router';
+import { Redirect, router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CustomButton from '../components/CustomButton';
 
@@ -19,7 +19,7 @@ export default function App() {
 
 					<Image 
 						source={images.cards}
-						className="max-w--[380px] w-full h-[300px]"
+						className="max-w-[380px] w-full h-[300px]"
 						resizeMode="contain"
 
 					/>
@@ -42,7 +42,7 @@ export default function App() {
 
 					<CustomButton 
 						title="Continue with Email"
-						handlePress={() => {}}
+						handlePress={() => router.push('/sign-in')}
 						containerStyles="w-full mt-7"
 					/>
 				</View>
